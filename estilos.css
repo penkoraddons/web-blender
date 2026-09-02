@@ -7,7 +7,7 @@
     --texto-apagado: #4b586e;
     --borde-hud: rgba(255, 102, 0, 0.2);
     --glow-naranja: 0 0 25px rgba(255, 102, 0, 0.6);
-    --glow-cian: 0 0 25px rgba(0, 255, 204, 0.6);
+    --glow-cyan: 0 0 25px rgba(0, 255, 204, 0.6);
 }
 
 * {
@@ -68,26 +68,37 @@ header {
 }
 
 .nav-container {
-    display: flex; justify-content: space-between; align-items: center; padding: 15px 0;
+    display: flex; justify-content: space-between; align-items: center; padding: 10px 0;
 }
 
-.logo {
-    font-size: 1.4rem; font-weight: 900; letter-spacing: 2px;
+/* CONTENEDOR DEL LOGO */
+.brand-hud {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-.logo span {
-    color: var(--blender);
-    text-shadow: var(--glow-naranja);
+/* CONTROL DE TAMAÑO ESTRICTO PARA LAS IMÁGENES DEL HEADER */
+.logo-k-alpha {
+    height: 38px; /* Altura máxima controlada */
+    width: auto;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 0 6px rgba(255, 102, 0, 0.8));
+    animation: neonLatido 3s ease-in-out infinite alternate;
 }
 
-.logo-icono {
-    color: var(--blender);
-    animation: pulsarGlow 2s ease-in-out infinite alternate;
+.logo-letras-alpha {
+    height: 20px; /* Altura máxima controlada para las letras */
+    width: auto;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
 }
 
-@keyframes pulsarGlow {
-    0% { transform: scale(1); filter: drop-shadow(0 0 2px var(--blender)); }
-    100% { transform: scale(1.1); filter: drop-shadow(0 0 10px var(--blender)); }
+@keyframes neonLatido {
+    0% { filter: drop-shadow(0 0 4px rgba(255, 102, 0, 0.5)); }
+    100% { filter: drop-shadow(0 0 10px rgba(255, 102, 0, 0.9)); }
 }
 
 nav a {
@@ -111,11 +122,6 @@ nav a:hover {
     border: 1px solid var(--blender); color: var(--blender);
     padding: 6px 14px; font-size: 0.8rem; font-weight: bold;
     letter-spacing: 1px; margin-bottom: 25px; box-shadow: inset 0 0 10px rgba(255,102,0,0.2);
-}
-
-.hero h1 {
-    font-size: 4rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 20px;
-    text-shadow: 0 0 20px rgba(255,255,255,0.1);
 }
 
 .hero p {
@@ -241,7 +247,7 @@ nav a:hover {
 }
 
 .modulo-addon:hover:has(.cian) {
-    border-color: var(--cian); box-shadow: var(--glow-cian);
+    border-color: var(--cian); box-shadow: var(--glow-cyan);
 }
 
 /* BOTONES TÁCTICOS */
@@ -264,7 +270,7 @@ nav a:hover {
 }
 
 .btn-cian-hud:hover {
-    background: var(--cian); color: #000; box-shadow: var(--glow-cian);
+    background: var(--cian); color: #000; box-shadow: var(--glow-cyan);
 }
 
 /* FOOTER HUD */
