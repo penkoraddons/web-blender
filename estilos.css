@@ -1,127 +1,314 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis Trabajos y Addons de Blender</title>
-    <link rel="stylesheet" href="estilos.css">
-    <link rel="stylesheet" href="https://cloudflare.com">
-</head>
-<body>
+:root {
+    --bg-espacial: #05060b;
+    --bg-cristal: rgba(13, 16, 27, 0.85);
+    --blender-orange: #ff6600;
+    --cyber-cyan: #00f0ff;
+    --text-neon: #f0f4f8;
+    --text-dim: #62718a;
+    --glow-naranja: 0 0 20px rgba(255, 102, 0, 0.4);
+    --glow-cyan: 0 0 20px rgba(0, 240, 255, 0.4);
+}
 
-    <!-- Capas de efectos especiales mecánicos de fondo -->
-    <div class="lineas-escaneo"></div>
-    <div class="luces-ambiente"></div>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    scroll-behavior: smooth;
+}
 
-    <header>
-        <div class="contenedor nav-container">
-            <div class="logo">
-                <i class="fa-solid fa-cube logo-icono"></i> Blender<span>Hub</span>
-            </div>
-            <nav>
-                <a href="#portafolio" class="enlace-nav">Portafolio</a>
-                <a href="#addons" class="enlace-nav">Mis Addons</a>
-            </nav>
-        </div>
-    </header>
+body {
+    background-color: var(--bg-espacial);
+    background-image: 
+        linear-gradient(rgba(255, 102, 0, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 102, 0, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+    color: var(--text-neon);
+    line-height: 1.6;
+}
 
-    <section class="hero">
-        <div class="hero-particulas"></div>
-        <div class="contenedor hero-info">
-            <div class="badge-tecnologico">BLENDER ENGINE 4.X READY</div>
-            <h1>Diseño 3D & Addons Avanzados</h1>
-            <p>Explora mis proyectos artísticos y consigue herramientas optimizadas para flujos de trabajo profesionales.</p>
-            <a href="#addons" class="btn-principal">
-                <span>Explorar Repositorio</span>
-                <i class="fa-solid fa-terminal"></i>
-            </a>
-        </div>
-    </section>
+.contenedor {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-    <section id="portafolio" class="seccion">
-        <div class="contenedor">
-            <h2 class="titulo-seccion">Proyectos & Renders</h2>
-            <div class="cuadricula">
-                
-                <div class="tarjeta">
-                    <div class="tarjeta-imagen">
-                        <img src="https://unsplash.com" alt="Render 3D">
-                        <div class="overlay-tarjeta"><i class="fa-solid fa-eye"></i></div>
-                    </div>
-                    <div class="tarjeta-contenido">
-                        <span class="etiqueta-render">Cycles Render</span>
-                        <h3>Escenario Sci-Fi</h3>
-                        <p>Proyecto de entornos complejos con iluminación volumétrica y materiales procedurales.</p>
-                    </div>
-                </div>
+header {
+    background: rgba(5, 6, 11, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0; z-index: 1000;
+    border-bottom: 1px solid rgba(255, 102, 0, 0.15);
+}
 
-                <div class="tarjeta">
-                    <div class="tarjeta-imagen">
-                        <img src="https://unsplash.com" alt="Render 3D">
-                        <div class="overlay-tarjeta"><i class="fa-solid fa-eye"></i></div>
-                    </div>
-                    <div class="tarjeta-contenido">
-                        <span class="etiqueta-render">Modelado 3D</span>
-                        <h3>Modelado de Personaje</h3>
-                        <p>Estudio anatómico enfocado en topología limpia para animación y texturas 4K.</p>
-                    </div>
-                </div>
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
 
-            </div>
-        </div>
-    </section>
+.logo {
+    font-size: 1.4rem;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
 
-    <section id="addons" class="seccion fondo-oscuro">
-        <div class="contenedor">
-            <h2 class="titulo-seccion">Mis Addons para Blender</h2>
-            <div class="cuadricula">
+.logo span {
+    color: var(--blender-orange);
+    text-shadow: 0 0 10px rgba(255, 102, 0, 0.5);
+}
 
-                <div class="tarjeta-addon">
-                    <div class="brillo-tarjeta"></div>
-                    <div class="addon-header">
-                        <div class="addon-icono">
-                            <i class="fa-solid fa-wand-magic-sparkles"></i>
-                        </div>
-                        <div>
-                            <h3>Quick Material Pro</h3>
-                            <span class="addon-version">v1.0 stable</span>
-                        </div>
-                    </div>
-                    <p class="addon-desc">Crea sombreadores fotorrealistas instantáneos mediante un panel flotante inteligente integrado en el Viewport 3D.</p>
-                    <a href="https://gumroad.com" target="_blank" class="btn-addon btn-gumroad">
-                        <span>Adquirir en Gumroad</span>
-                        <i class="fa-solid fa-angle-right"></i>
-                    </a>
-                </div>
+nav a {
+    color: var(--text-dim);
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
 
-                <div class="tarjeta-addon">
-                    <div class="brillo-tarjeta"></div>
-                    <div class="addon-header">
-                        <div class="addon-icono">
-                            <i class="fa-solid fa-bolt"></i>
-                        </div>
-                        <div>
-                            <h3>Fast Render Setup</h3>
-                            <span class="addon-version cian">v1.2 stable</span>
-                        </div>
-                    </div>
-                    <p class="addon-desc">Algoritmo de optimización que reajusta los rebotes de luz y muestras de Cycles disminuyendo los tiempos de render hasta un 40%.</p>
-                    <a href="https://gumroad.com" target="_blank" class="btn-addon btn-store">
-                        <span>Ver en la Tienda</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
+nav a:hover {
+    color: #fff;
+    text-shadow: var(--glow-naranja);
+}
 
-            </div>
-        </div>
-    </section>
+.hero {
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    background: radial-gradient(circle at center, rgba(255, 102, 0, 0.1) 0%, transparent 70%);
+    padding-top: 80px;
+}
 
-    <footer>
-        <div class="contenedor footer-contenido">
-            <p>&copy; 2026 BlenderHub Portfolio. Diseñado para entornos de alto rendimiento.</p>
-            <div class="footer-linea"></div>
-        </div>
-    </footer>
+.badge-tecnologico {
+    display: inline-block;
+    background: rgba(255, 102, 0, 0.1);
+    border: 1px solid rgba(255, 102, 0, 0.3);
+    color: var(--blender-orange);
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
 
-</body>
-</html>
+.hero h1 {
+    font-size: 3.8rem;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    background: linear-gradient(to right, #ffffff, #8899af);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-dim);
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+}
+
+.btn-principal {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    background: #fff;
+    color: #000;
+    padding: 16px 35px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.btn-principal:hover {
+    transform: translateY(-3px);
+    background: var(--blender-orange);
+    color: #fff;
+    box-shadow: var(--glow-naranja);
+}
+
+.seccion {
+    padding: 100px 0;
+}
+
+.fondo-oscuro {
+    background-color: rgba(18, 20, 32, 0.4);
+}
+
+.titulo-seccion {
+    font-size: 2.2rem;
+    font-weight: 900;
+    margin-bottom: 60px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.titulo-seccion::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--blender-orange);
+    margin: 15px auto 0 auto;
+}
+
+.cuadricula {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 35px;
+}
+
+.tarjeta {
+    background: var(--bg-cristal);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 102, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.tarjeta:hover {
+    transform: translateY(-8px);
+    border-color: var(--blender-orange);
+    box-shadow: var(--glow-naranja);
+}
+
+.tarjeta-imagen {
+    height: 230px;
+    background: #090a0f;
+}
+
+.tarjeta-imagen img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+}
+
+.tarjeta-contenido {
+    padding: 25px;
+}
+
+.etiqueta-render {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--blender-orange);
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.tarjeta-contenido h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.tarjeta-contenido p {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+}
+
+.tarjeta-addon {
+    background: var(--bg-cristal);
+    border: 1px solid rgba(0, 240, 255, 0.15);
+    border-radius: 12px;
+    padding: 35px;
+    transition: all 0.3s ease;
+}
+
+.tarjeta-addon:hover {
+    transform: translateY(-8px);
+    border-color: var(--cyber-cyan);
+    box-shadow: var(--glow-cyan);
+}
+
+.addon-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.addon-icono {
+    font-size: 2rem;
+    color: var(--cyber-cyan);
+}
+
+.addon-header h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.addon-version {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--cyber-cyan);
+    background: rgba(0, 240, 255, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.addon-desc {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+}
+
+.btn-addon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+
+.btn-gumroad {
+    background: #ffffff;
+    color: #000000;
+}
+
+.btn-gumroad:hover {
+    background: var(--blender-orange);
+    color: #fff;
+    box-shadow: var(--glow-naranja);
+}
+
+.btn-store {
+    background: transparent;
+    color: var(--cyber-cyan);
+    border: 1px solid var(--cyber-cyan);
+}
+
+.btn-store:hover {
+    background: var(--cyber-cyan);
+    color: #000;
+    box-shadow: var(--glow-cyan);
+}
+
+footer {
+    padding: 50px 0;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
