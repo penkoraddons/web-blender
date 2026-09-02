@@ -75,7 +75,7 @@
             
             <!-- Contenedor centrado para un solo addon destacado -->
             <div style="display: flex; justify-content: center;">
-                <div class="modulo-addon" style="max-width: 550px; width: 100%;">
+                <div class="modulo-addon" style="max-width: 600px; width: 100%;">
                     <div class="modulo-esquina"></div>
                     <div class="addon-top">
                         <div class="addon-radar">
@@ -88,10 +88,20 @@
                     </div>
                     <p class="modulo-desc">Implementación del sistema avanzado de creación y manipulación de splines nativo de 3ds Max adaptado para el flujo de trabajo de Blender. Actualmente en fase final de desarrollo.</p>
                     
-                    <!-- Botón temporal de Próximamente -->
-                    <a href="#" class="btn-store-hud btn-gumroad-hud" style="background: rgba(255, 102, 0, 0.15); color: var(--blender); border: 1px solid var(--blender); cursor: not-allowed;">
-                        <span>PRÓXIMAMENTE EN GUMROAD</span> <i class="fa-solid fa-hourglass-half"></i>
-                    </a>
+                    <!-- Fila con los dos botones HUD para las dos tiendas -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;">
+                        
+                        <!-- Botón Gumroad (Estilo HUD Blanco) -->
+                        <a href="#" class="btn-store-hud btn-gumroad-hud" style="background: rgba(255, 255, 255, 0.05); color: #fff; border: 1px solid rgba(255, 255, 255, 0.2); cursor: not-allowed; font-size: 0.75rem; padding: 12px 10px;">
+                            <span>GUMROAD [DEV]</span> <i class="fa-solid fa-hourglass-half"></i>
+                        </a>
+                        
+                        <!-- Botón Superhive (Estilo HUD Naranja Blender) -->
+                        <a href="#" class="btn-store-hud btn-cian-hud" style="background: rgba(255, 102, 0, 0.1); color: var(--blender); border: 1px solid rgba(255, 102, 0, 0.4); cursor: not-allowed; font-size: 0.75rem; padding: 12px 10px;">
+                            <span>SUPERHIVE [DEV]</span> <i class="fa-solid fa-hourglass-half"></i>
+                        </a>
+                        
+                    </div>
                 </div>
             </div>
 
@@ -107,3 +117,4 @@
 
 </body>
 </html>
+
