@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blender Core | Addons & Renders</title>
+    <title>CoreBlender | KurveSpline Workspace</title>
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="https://cloudflare.com">
 </head>
@@ -21,7 +21,7 @@
             </div>
             <nav>
                 <a href="#portafolio" class="enlace-hud"><i class="fa-solid fa-layer-group"></i> Portafolio</a>
-                <a href="#addons" class="enlace-hud"><i class="fa-solid fa-sliders"></i> Mis Addons</a>
+                <a href="#addons" class="enlace-hud"><i class="fa-solid fa-sliders"></i> Addons</a>
             </nav>
         </div>
     </header>
@@ -30,9 +30,9 @@
         <div class="contenedor hero-info">
             <div class="terminal-badge"><i class="fa-solid fa-terminal"></i> SYSTEM: ACTIVE // UI_v3.0</div>
             <h1>VISUAL WORKSPACE</h1>
-            <p>Repositorio técnico de herramientas personalizadas, scripts de optimización y entornos fotorrealistas para Blender.</p>
+            <p>Repositorio técnico de herramientas avanzadas, optimización y entornos fotorrealistas para Blender.</p>
             <a href="#addons" class="btn-hud">
-                <span>INGRESAR AL REPOSITORIO</span>
+                <span>VER PROYECTO ACTIVO</span>
                 <i class="fa-solid fa-chevron-right"></i>
             </a>
         </div>
@@ -45,8 +45,7 @@
                 
                 <div class="tarjeta-premium">
                     <div class="tarjeta-marco">
-                        <img src="https://unsplash.com" alt="Render">
-                        <div class="tarjeta-laser"></div>
+                        <img src="render1.jpg" alt="Render 1">
                     </div>
                     <div class="tarjeta-cuerpo">
                         <span class="sub-hud">CYCLES_CORE</span>
@@ -57,8 +56,7 @@
 
                 <div class="tarjeta-premium">
                     <div class="tarjeta-marco">
-                        <img src="https://unsplash.com" alt="Render">
-                        <div class="tarjeta-laser"></div>
+                        <img src="render2.jpg" alt="Render 2">
                     </div>
                     <div class="tarjeta-cuerpo">
                         <span class="sub-hud">MESH_GEOM</span>
@@ -73,44 +71,30 @@
 
     <section id="addons" class="seccion">
         <div class="contenedor">
-            <h2 class="titulo-hud">MODULES_ / Addons</h2>
-            <div class="cuadricula">
-
-                <div class="modulo-addon">
+            <h2 class="titulo-hud">DEVELOPMENT_ / Addons Activos</h2>
+            
+            <!-- Contenedor centrado para un solo addon destacado -->
+            <div style="display: flex; justify-content: center;">
+                <div class="modulo-addon" style="max-width: 550px; width: 100%;">
                     <div class="modulo-esquina"></div>
                     <div class="addon-top">
                         <div class="addon-radar">
-                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <i class="fa-solid fa-bezier-curve"></i>
                         </div>
                         <div>
-                            <h3>Quick Material Pro</h3>
-                            <span class="tag-hud tag-naranja">EXT_01 // V1.0</span>
+                            <h3>KurveSpline</h3>
+                            <span class="tag-hud tag-naranja">BLENDER 5.1+ READY</span>
                         </div>
                     </div>
-                    <p class="modulo-desc">Inyección de materiales procedurales complejos en tiempo real directamente sobre la vista 3D activa.</p>
-                    <a href="https://gumroad.com" target="_blank" class="btn-store-hud btn-gumroad-hud">
-                        <span>CONSEGUIR EN GUMROAD</span> <i class="fa-solid fa-cart-shopping"></i>
+                    <p class="modulo-desc">Implementación del sistema avanzado de creación y manipulación de splines nativo de 3ds Max adaptado para el flujo de trabajo de Blender. Actualmente en fase final de desarrollo.</p>
+                    
+                    <!-- Botón temporal de Próximamente -->
+                    <a href="#" class="btn-store-hud btn-gumroad-hud" style="background: rgba(255, 102, 0, 0.15); color: var(--blender); border: 1px solid var(--blender); cursor: not-allowed;">
+                        <span>PRÓXIMAMENTE EN GUMROAD</span> <i class="fa-solid fa-hourglass-half"></i>
                     </a>
                 </div>
-
-                <div class="modulo-addon">
-                    <div class="modulo-esquina cian"></div>
-                    <div class="addon-top">
-                        <div class="addon-radar cian">
-                            <i class="fa-solid fa-bolt"></i>
-                        </div>
-                        <div>
-                            <h3>Fast Render Setup</h3>
-                            <span class="tag-hud tag-cian">EXT_02 // V1.2</span>
-                        </div>
-                    </div>
-                    <p class="modulo-desc">Ajuste algorítmico automatizado de muestras y rebotes lumínicos. Reduce tiempos de render hasta un 40%.</p>
-                    <a href="https://gumroad.com" target="_blank" class="btn-store-hud btn-cian-hud">
-                        <span>VER EN LA TIENDA</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </a>
-                </div>
-
             </div>
+
         </div>
     </section>
 
