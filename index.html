@@ -3,57 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis Addons y Renders | Blender</title>
+    <title>Blender Core | Addons & Renders</title>
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="https://cloudflare.com">
 </head>
 <body>
 
+    <!-- Capas de efectos de monitor holográfico -->
+    <div class="monitor-grid"></div>
+    <div class="monitor-scanlines"></div>
+    <div class="glow-ambiental"></div>
+
     <header>
         <div class="contenedor nav-container">
             <div class="logo">
-                <i class="fa-solid fa-cube logo-icono"></i> Blender<span>Hub</span>
+                <i class="fa-solid fa-cube logo-icono"></i> CORE<span>BLENDER</span>
             </div>
             <nav>
-                <a href="#portafolio">Portafolio</a>
-                <a href="#addons">Mis Addons</a>
+                <a href="#portafolio" class="enlace-hud"><i class="fa-solid fa-layer-group"></i> Portafolio</a>
+                <a href="#addons" class="enlace-hud"><i class="fa-solid fa-sliders"></i> Mis Addons</a>
             </nav>
         </div>
     </header>
 
     <section class="hero">
         <div class="contenedor hero-info">
-            <div class="badge-tecnologico">ENGINE 4.X READY</div>
-            <h1>Diseño 3D & Addons</h1>
-            <p>Explora mis proyectos artísticos y consigue herramientas optimizadas para Blender.</p>
-            <a href="#addons" class="btn-principal">Ver Addons <i class="fa-solid fa-terminal"></i></a>
+            <div class="terminal-badge"><i class="fa-solid fa-terminal"></i> SYSTEM: ACTIVE // UI_v3.0</div>
+            <h1>VISUAL WORKSPACE</h1>
+            <p>Repositorio técnico de herramientas personalizadas, scripts de optimización y entornos fotorrealistas para Blender.</p>
+            <a href="#addons" class="btn-hud">
+                <span>INGRESAR AL REPOSITORIO</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
         </div>
     </section>
 
     <section id="portafolio" class="seccion">
         <div class="contenedor">
-            <h2 class="titulo-seccion">Proyectos & Renders</h2>
+            <h2 class="titulo-hud">DATABASE_ / Renders</h2>
             <div class="cuadricula">
                 
-                <div class="tarjeta">
-                    <div class="tarjeta-imagen">
-                        <img src="https://unsplash.com" alt="Render 3D">
+                <div class="tarjeta-premium">
+                    <div class="tarjeta-marco">
+                        <img src="https://unsplash.com" alt="Render">
+                        <div class="tarjeta-laser"></div>
                     </div>
-                    <div class="tarjeta-contenido">
-                        <span class="etiqueta-render">Cycles</span>
+                    <div class="tarjeta-cuerpo">
+                        <span class="sub-hud">CYCLES_CORE</span>
                         <h3>Escenario Sci-Fi</h3>
-                        <p>Proyecto de entornos complejos con iluminación volumétrica y materiales avanzados.</p>
+                        <p>Simulación de entornos masivos con mapeado de iluminación volumétrica y geometrías procedurales.</p>
                     </div>
                 </div>
 
-                <div class="tarjeta">
-                    <div class="tarjeta-imagen">
-                        <img src="https://unsplash.com" alt="Render 3D">
+                <div class="tarjeta-premium">
+                    <div class="tarjeta-marco">
+                        <img src="https://unsplash.com" alt="Render">
+                        <div class="tarjeta-laser"></div>
                     </div>
-                    <div class="tarjeta-contenido">
-                        <span class="etiqueta-render">Modelado</span>
+                    <div class="tarjeta-cuerpo">
+                        <span class="sub-hud">MESH_GEOM</span>
                         <h3>Modelado de Personaje</h3>
-                        <p>Estudio enfocado en topología limpia para animación y texturas de alta resolución.</p>
+                        <p>Optimización de topología para animación cinematográfica y texturizado PBR avanzado.</p>
                     </div>
                 </div>
 
@@ -61,40 +71,42 @@
         </div>
     </section>
 
-    <section id="addons" class="seccion fondo-oscuro">
+    <section id="addons" class="seccion">
         <div class="contenedor">
-            <h2 class="titulo-seccion">Mis Addons para Blender</h2>
+            <h2 class="titulo-hud">MODULES_ / Addons</h2>
             <div class="cuadricula">
 
-                <div class="tarjeta-addon">
-                    <div class="addon-header">
-                        <div class="addon-icono">
+                <div class="modulo-addon">
+                    <div class="modulo-esquina"></div>
+                    <div class="addon-top">
+                        <div class="addon-radar">
                             <i class="fa-solid fa-wand-magic-sparkles"></i>
                         </div>
                         <div>
                             <h3>Quick Material Pro</h3>
-                            <span class="addon-version">v1.0 stable</span>
+                            <span class="tag-hud tag-naranja">EXT_01 // V1.0</span>
                         </div>
                     </div>
-                    <p class="addon-desc">Crea sombreadores fotorrealistas instantáneos directamente en el Viewport 3D.</p>
-                    <a href="https://gumroad.com" target="_blank" class="btn-addon btn-gumroad">
-                        Conseguir en Gumroad <i class="fa-solid fa-angle-right"></i>
+                    <p class="modulo-desc">Inyección de materiales procedurales complejos en tiempo real directamente sobre la vista 3D activa.</p>
+                    <a href="https://gumroad.com" target="_blank" class="btn-store-hud btn-gumroad-hud">
+                        <span>CONSEGUIR EN GUMROAD</span> <i class="fa-solid fa-cart-shopping"></i>
                     </a>
                 </div>
 
-                <div class="tarjeta-addon">
-                    <div class="addon-header">
-                        <div class="addon-icono">
+                <div class="modulo-addon">
+                    <div class="modulo-esquina cian"></div>
+                    <div class="addon-top">
+                        <div class="addon-radar cian">
                             <i class="fa-solid fa-bolt"></i>
                         </div>
                         <div>
                             <h3>Fast Render Setup</h3>
-                            <span class="addon-version cian">v1.2 stable</span>
+                            <span class="tag-hud tag-cian">EXT_02 // V1.2</span>
                         </div>
                     </div>
-                    <p class="addon-desc">Optimiza automáticamente los rebotes de luz en Cycles disminuyendo los tiempos de render.</p>
-                    <a href="https://gumroad.com" target="_blank" class="btn-addon btn-store">
-                        Ver en la Tienda <i class="fa-solid fa-up-right-from-square"></i>
+                    <p class="modulo-desc">Ajuste algorítmico automatizado de muestras y rebotes lumínicos. Reduce tiempos de render hasta un 40%.</p>
+                    <a href="https://gumroad.com" target="_blank" class="btn-store-hud btn-cian-hud">
+                        <span>VER EN LA TIENDA</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </a>
                 </div>
 
@@ -103,8 +115,9 @@
     </section>
 
     <footer>
-        <div class="contenedor">
-            <p>&copy; 2026 BlenderHub. Desarrollado para la comunidad 3D.</p>
+        <div class="contenedor footer-hud">
+            <div class="linea-hud"></div>
+            <p>// COREBLENDER HARDWARE WORKSPACE. TODOS LOS SISTEMAS OPERATIVOS EN RENDIMIENTO ÓPTIMO.</p>
         </div>
     </footer>
 
