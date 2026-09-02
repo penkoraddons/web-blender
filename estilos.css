@@ -68,37 +68,52 @@ header {
 }
 
 .nav-container {
-    display: flex; justify-content: space-between; align-items: center; padding: 10px 0;
+    display: flex; justify-content: space-between; align-items: center; padding: 12px 0;
 }
 
-/* CONTENEDOR DEL LOGO */
+/* CONTENEDOR DE MARCA HUD ALINEADO */
 .brand-hud {
     display: flex;
-    align-items: center;
-    gap: 12px;
+    align-items: flex-end; /* Fuerza a las letras a alinearse con la base inferior de la K */
+    gap: 8px; /* Reduce ligeramente la separación para un bloque más compacto */
 }
 
-/* CONTROL DE TAMAÑO ESTRICTO PARA LAS IMÁGENES DEL HEADER */
+/* Icono de la K con latido de neón potente */
 .logo-k-alpha {
-    height: 38px; /* Altura máxima controlada */
+    height: 40px;
     width: auto;
     object-fit: contain;
     display: block;
-    filter: drop-shadow(0 0 6px rgba(255, 102, 0, 0.8));
+    filter: drop-shadow(0 0 8px rgba(255, 102, 0, 0.85));
     animation: neonLatido 3s ease-in-out infinite alternate;
 }
 
+/* NUEVO: Ajuste de posición hacia abajo y doble contorno Glow para las letras */
 .logo-letras-alpha {
-    height: 20px; /* Altura máxima controlada para las letras */
+    height: 18px; 
     width: auto;
     object-fit: contain;
     display: block;
-    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
+    margin-bottom: 3px; /* Pequeño empuje hacia abajo para enrasar la caja con la K */
+    /* Crea un reborde de luz naranja y blanco fusionado alrededor de la silueta transparente */
+    filter: 
+        drop-shadow(1px 1px 0px rgba(255, 102, 0, 0.5))
+        drop-shadow(-1px -1px 0px rgba(255, 102, 0, 0.5))
+        drop-shadow(0 0 6px rgba(255, 102, 0, 0.7));
+    transition: filter 0.3s ease;
+}
+
+/* Efecto reactivo: Brilla más fuerte si pones el ratón encima del logo */
+.brand-hud:hover .logo-letras-alpha {
+    filter: 
+        drop-shadow(1px 1px 0px var(--blender))
+        drop-shadow(-1px -1px 0px var(--blender))
+        drop-shadow(0 0 12px rgba(255, 102, 0, 0.95));
 }
 
 @keyframes neonLatido {
-    0% { filter: drop-shadow(0 0 4px rgba(255, 102, 0, 0.5)); }
-    100% { filter: drop-shadow(0 0 10px rgba(255, 102, 0, 0.9)); }
+    0% { filter: drop-shadow(0 0 4px rgba(255, 102, 0, 0.6)); }
+    100% { filter: drop-shadow(0 0 12px rgba(255, 102, 0, 0.95)); }
 }
 
 nav a {
@@ -285,3 +300,5 @@ footer {
 .footer-hud {
     text-align: center; color: var(--texto-apagado); font-size: 0.8rem; letter-spacing: 1px;
 }
+
+
