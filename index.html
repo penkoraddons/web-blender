@@ -4,9 +4,235 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kurve3D | Advanced Blender Addons</title>
-    <!-- Enlace exacto a tu archivo de estilos -->
-   <link rel="stylesheet" href="./estilos.css?v=3.0">
+    
+    <!-- ESTILOS INTERNOS PARA EVITAR BLOQUEOS DE GITHUB -->
+    <style>
+        :root {
+            --bg-main: #0c0f12;          
+            --bg-card: #14181f;          
+            --text-cream: #f4f0ea;       
+            --text-muted: rgba(244, 240, 234, 0.6); 
+            --accent-copper: #c57d4a;    
+            --accent-glow: rgba(197, 125, 74, 0.15); 
+            --font-sans: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-cream);
+            font-family: var(--font-sans);
+            letter-spacing: 0.5px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 4rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(12, 15, 18, 0.95) 60%, rgba(12, 15, 18, 0));
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .brand-text {
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .accent-3d {
+            color: var(--accent-copper);
+            font-weight: 900;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-cream);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            color: var(--accent-copper);
+        }
+
+        .main-container {
+            padding-top: 100px;
+        }
+
+        .hero {
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            background: radial-gradient(circle, var(--accent-glow) 0%, rgba(12, 15, 18, 0) 65%);
+        }
+
+        .hero-title {
+            font-size: 5rem;
+            font-weight: 800;
+            letter-spacing: 12px;
+            margin-bottom: 1rem;
+            text-indent: 12px;
+            color: var(--text-cream);
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.7); 
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            max-width: 600px;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        .section-block {
+            padding: 4rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+            color: var(--text-cream);
+            border-bottom: 1px solid rgba(244, 240, 234, 0.08);
+            padding-bottom: 0.6rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .premium-card {
+            background-color: var(--bg-card);
+            border-radius: 6px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 1px 0px rgba(255,255,255,0.05);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-tag {
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            color: var(--accent-copper);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .premium-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .premium-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 0.7rem;
+            background-color: rgba(197, 125, 74, 0.1);
+            color: var(--accent-copper);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            border: 1px solid rgba(197, 125, 74, 0.2);
+        }
+
+        .card-links {
+            margin-top: auto;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .card-links a {
+            color: var(--text-cream);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--accent-copper);
+            padding-bottom: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .card-links a:hover {
+            color: var(--accent-copper);
+        }
+
+        .site-footer {
+            padding: 3rem 4rem;
+            border-top: 1px solid rgba(244, 240, 234, 0.03);
+            text-align: center;
+        }
+
+        .site-footer p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 1.5rem 2rem; }
+            .nav-links { gap: 1.2rem; }
+            .hero-title { font-size: 3rem; letter-spacing: 6px; }
+            .section-block { padding: 2rem 2rem; }
+        }
+    </style>
 </head>
 <body>
 
@@ -27,7 +253,7 @@
             <p class="hero-subtitle">Advanced Pipeline & Utility Addons for Blender</p>
         </section>
 
-        <!-- SECCIÓN EXCLUSIVA DE ADDONS (4 Tarjetas completas) -->
+        <!-- SECCIÓN EXCLUSIVA DE ADDONS (Tus 4 herramientas) -->
         <section id="addons" class="section-block">
             <h2 class="section-title">Blender Addons</h2>
             <div class="card-grid">
@@ -69,7 +295,7 @@
                 <!-- ADDON 4: K Propath -->
                 <div class="premium-card">
                     <div class="card-badge">IN DEVELOPMENT</div>
-                    <div class="card-tag">ANIMATION / CAMERA CAMERA</div>
+                    <div class="card-tag">ANIMATION / CAMERA PATHS</div>
                     <h3>K Propath</h3>
                     <p>2-click automation tool for camera and object paths. Features constant velocity, roller-coaster physics style, automatic or manual tilt, and dynamic rotations.</p>
                     <div class="card-links">
