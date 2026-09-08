@@ -1,31 +1,200 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kurve3D | Advanced Blender Tools</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header class="navbar">
-        <div class="logo-area">
-            <img src="logo.png" alt="Kurve3D Logo" class="nav-logo-img">
-            <span class="brand-text">KURVE<span class="accent-3d">3D</span></span>
-        </div>
-        <nav class="nav-links">
-            <a href="#database">Database</a>
-            <a href="#modules">Development</a>
-            <a href="#contact" class="btn-nav">Contact</a>
-        </nav>
-    </header>
-    <main class="main-container">
-        <section class="hero">
-            <h1 class="hero-title">KURVE<span class="accent-3d">3D</span></h1>
-            <p class="hero-subtitle">Advanced Pipeline Tools & High-Fidelity Environments for Blender</p>
-        </section>
-    </main>
-    <footer class="site-footer">
-        <p>&copy; 2026 Kurve3D Portfolio.</p>
-    </footer>
-</body>
-</html>
+/* ==========================================================================
+   1. VARIABLES DE ENTORNO (Nueva Paleta Premium Kurve3D)
+   ========================================================================== */
+:root {
+    --bg-main: #0c0f12;          /* Fondo gris oscuro/negro mate profundo */
+    --bg-card: #14181f;          /* Fondo de elementos/tarjetas ligeramente más claro */
+    --text-cream: #f4f0ea;       /* Color marfil/crema para tipografía principal */
+    --text-muted: rgba(244, 240, 234, 0.6); /* Texto secundario atenuado */
+    --accent-copper: #c57d4a;    /* Bronce/Cobre metálico del nuevo logo */
+    --accent-glow: rgba(197, 125, 74, 0.15); /* Brillo sutil cobre */
+    --font-sans: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ==========================================================================
+   2. ESTILOS BASE Y RESETEO
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-cream);
+    font-family: var(--font-sans);
+    letter-spacing: 0.5px;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   3. BARRA DE NAVEGACIÓN (Navbar)
+   ========================================================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: linear-gradient(to bottom, rgba(12, 15, 18, 0.9) 60%, rgba(12, 15, 18, 0));
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.nav-logo-img {
+    height: 32px; /* Ajusta según el tamaño de tu archivo de imagen */
+    width: auto;
+    object-fit: contain;
+}
+
+.brand-text {
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.accent-3d {
+    color: var(--accent-copper);
+    font-weight: 900;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    color: var(--text-cream);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.7;
+    transition: var(--transition-smooth);
+}
+
+.nav-links a:hover {
+    opacity: 1;
+    color: var(--accent-copper);
+}
+
+/* Botón especial estilo cápsula en el menú */
+.nav-links .btn-nav {
+    border: 1px solid rgba(244, 240, 234, 0.2);
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    opacity: 1;
+}
+
+.nav-links .btn-nav:hover {
+    border-color: var(--accent-copper);
+    background-color: rgba(197, 125, 74, 0.05);
+}
+
+/* ==========================================================================
+   4. SECCIÓN PRINCIPAL (Hero Section)
+   ========================================================================== */
+.main-container {
+    padding-top: 80px; /* Evita que la navbar tape el contenido */
+}
+
+.hero {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    /* Fondo radial simulando una iluminación suave detrás del logo */
+    background: radial-gradient(circle, var(--accent-glow) 0%, rgba(12, 15, 18, 0) 65%);
+}
+
+.hero-title {
+    font-size: 5rem;
+    font-weight: 800;
+    letter-spacing: 12px;
+    margin-bottom: 1rem;
+    text-indent: 12px; /* Centra perfectamente el texto con tracking alto */
+    color: var(--text-cream);
+    /* Sombra suave para dar profundidad 3D */
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.7); 
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    max-width: 600px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    font-weight: 300;
+    animation: fadeIn 1.5s ease-out;
+}
+
+/* ==========================================================================
+   5. PIE DE PÁGINA (Footer)
+   ========================================================================== */
+.site-footer {
+    padding: 3rem 4rem;
+    border-top: 1px solid rgba(244, 240, 234, 0.03);
+    text-align: center;
+}
+
+.site-footer p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   6. ANIMACIONES Y RESPONSIVE
+   ========================================================================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Adaptación para pantallas móviles */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1.5rem 2rem;
+    }
+    
+    .nav-links {
+        gap: 1.2rem;
+    }
+    
+    .nav-links a {
+        font-size: 0.75rem;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        letter-spacing: 6px;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.95rem;
+    }
+}
