@@ -59,18 +59,15 @@
         .logo-area {
             display: flex;
             align-items: center;
+            gap: 0.8rem;
         }
 
-        .brand-text {
-            font-size: 0.95rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .accent-3d {
-            color: var(--accent-copper);
-            font-weight: 700;
+        /* Configuración del tamaño del nuevo Logo */
+        .nav-logo-img {
+            height: 24px; /* Tamaño optimizado para la barra Apple */
+            width: auto;
+            object-fit: contain;
+            display: block;
         }
 
         .nav-links a {
@@ -103,12 +100,11 @@
             padding: 2rem;
         }
 
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.5rem;
-            color: var(--text-cream);
+        .hero-title-img {
+            height: 80px; /* Tamaño del logo grande en el centro de la pantalla */
+            width: auto;
+            object-fit: contain;
+            margin-bottom: 1.5rem;
         }
 
         .hero-subtitle {
@@ -140,7 +136,7 @@
         .row-container {
             display: flex;
             flex-direction: column;
-            gap: 1.2rem; /* Espacio limpio entre filas */
+            gap: 1.2rem;
         }
 
         /* FILA INDIVIDUAL (Estilo Apple + Bordes Iluminados) */
@@ -156,14 +152,13 @@
             transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
         }
 
-        /* Efecto de borde iluminado y resplandor al pasar el ratón */
+        /* Efecto de borde iluminado al pasar el ratón */
         .addon-row:hover {
             border-color: var(--accent-copper);
             box-shadow: 0 0 25px var(--accent-glow);
             transform: translateY(-2px);
         }
 
-        /* Contenido izquierdo de la fila */
         .addon-info {
             max-width: 65%;
         }
@@ -207,7 +202,6 @@
             line-height: 1.5;
         }
 
-        /* Contenido derecho de la fila (Enlaces/Botones) */
         .addon-actions {
             display: flex;
             gap: 1.5rem;
@@ -223,16 +217,13 @@
             transition: color 0.2s ease;
         }
 
-        /* Botón de enlace principal estilo enlace Apple (con flecha) */
         .addon-actions .link-main {
-            color: #0066cc; /* Azul Apple */
+            color: var(--accent-copper); /* Cambiado de azul Apple a Cobre corporativo */
         }
         .addon-actions .link-main:hover {
-            color: #0077ed;
             text-decoration: underline;
         }
 
-        /* Botón estilo Coming Soon o Secundario */
         .addon-actions .link-sec {
             color: var(--text-muted);
         }
@@ -240,7 +231,6 @@
             color: var(--text-cream);
         }
 
-        /* PIE DE PÁGINA */
         .site-footer {
             padding: 3rem 4rem;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -253,13 +243,11 @@
             font-family: var(--font-sans);
         }
 
-        /* RESPONSIVE */
         @media (max-width: 768px) {
             .navbar { padding: 0 2rem; }
             .section-block { padding: 2rem 2rem; }
             .addon-row { flex-direction: column; align-items: flex-start; gap: 1.5rem; padding: 1.5rem; }
             .addon-info { max-width: 100%; }
-            .hero-title { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -268,7 +256,8 @@
     <!-- BARRA DE NAVEGACIÓN -->
     <header class="navbar">
         <div class="logo-area">
-            <span class="brand-text">KURVE<span class="accent-3d">3D</span></span>
+            <!-- AQUÍ SE LLAMA A TU NUEVA IMAGEN DE LOGO -->
+            <img src="./logo.png" alt="Kurve3D" class="nav-logo-img">
         </div>
         <nav class="nav-links">
             <a href="#addons">Addons</a>
@@ -278,7 +267,8 @@
     <!-- SECCIÓN HERO -->
     <main class="main-container">
         <section class="hero">
-            <h1 class="hero-title">KURVE<span class="accent-3d">3D</span></h1>
+            <!-- LOGO GRANDE CENTRADO EN LA PÁGINA -->
+            <img src="./logo.png" alt="Kurve3D Logo" class="hero-title-img">
             <p class="hero-subtitle">Advanced Pipeline & Utility Addons for Blender</p>
         </section>
 
@@ -314,3 +304,11 @@
                         <p>Advanced Material paint & Texture Authoring for Blender 5.2 LTS.</p>
                     </div>
                     <div class="addon-actions">
+                        <span class="link-sec">Coming Soon</span>
+                    </div>
+                </div>
+
+                <!-- ROW 3: K-mind -->
+                <div class="addon-row">
+                    <div class="addon-info">
+                        <div class="meta-line">
