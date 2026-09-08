@@ -1,39 +1,138 @@
+/* ==========================================================================
+   1. VARIABLES DE ENTORNO (Nueva Paleta Premium Kurve3D)
+   ========================================================================== */
 :root {
-    --bg-negro: #030407;
-    --bg-modulo: #090b11;
-    --blender: #ff6600;
-    --cian: #00ffcc;
-    --texto-brillante: #ffffff;
-    --texto-apagado: #4b586e;
-    --borde-hud: rgba(255, 102, 0, 0.2);
-    --glow-naranja: 0 0 25px rgba(255, 102, 0, 0.6);
-    --glow-cyan: 0 0 25px rgba(0, 255, 204, 0.6);
+    --bg-main: #0c0f12;          /* Fondo gris oscuro/negro mate profundo */
+    --bg-card: #14181f;          /* Fondo de tarjetas ligeramente más claro */
+    --text-cream: #f4f0ea;       /* Color marfil/crema para tipografía principal */
+    --text-muted: rgba(244, 240, 234, 0.6); /* Texto secundario atenuado */
+    --accent-copper: #c57d4a;    /* Bronce/Cobre metálico del nuevo logo */
+    --accent-glow: rgba(197, 125, 74, 0.15); /* Brillo sutil cobre */
+    --font-sans: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
 }
 
+/* ==========================================================================
+   2. ESTILOS BASE Y RESETEO
+   ========================================================================== */
 * {
-    margin: 0; padding: 0; box-sizing: border-box;
-    font-family: 'Courier New', Courier, monospace, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
     scroll-behavior: smooth;
 }
 
 body {
-    background-color: var(--bg-negro);
-    color: var(--texto-brillante);
+    background-color: var(--bg-main);
+    color: var(--text-cream);
+    font-family: var(--font-sans);
+    letter-spacing: 0.5px;
+    line-height: 1.6;
     overflow-x: hidden;
-    position: relative;
 }
 
-/* EFECTOS ESPECIALES HOLOGRÁFICOS DE FONDO */
-.monitor-grid {
+/* ==========================================================================
+   3. BARRA DE NAVEGACIÓN (Navbar)
+   ========================================================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: 
-        linear-gradient(rgba(255, 102, 0, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 102, 0, 0.04) 1px, transparent 1px);
-    background-size: 50px 50px;
-    /* --- Diseño de Rejilla y Bloques de Contenido --- */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: linear-gradient(to bottom, rgba(12, 15, 18, 0.95) 60%, rgba(12, 15, 18, 0));
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.brand-text {
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.accent-3d {
+    color: var(--accent-copper);
+    font-weight: 900;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    color: var(--text-cream);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+    color: var(--accent-copper);
+}
+
+/* ==========================================================================
+   4. SECCIÓN PRINCIPAL (Hero Section)
+   ========================================================================== */
+.main-container {
+    padding-top: 100px;
+}
+
+.hero {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    background: radial-gradient(circle, var(--accent-glow) 0%, rgba(12, 15, 18, 0) 65%);
+}
+
+.hero-title {
+    font-size: 5rem;
+    font-weight: 800;
+    letter-spacing: 12px;
+    margin-bottom: 1rem;
+    text-indent: 12px;
+    color: var(--text-cream);
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.7); 
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    max-width: 600px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+/* ==========================================================================
+   5. SECCIÓN DE LAS 4 TARJETAS DE ADDONS
+   ========================================================================== */
 .section-block {
-    padding: 6rem 4rem 2rem 4rem;
+    padding: 4rem 4rem;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -50,7 +149,7 @@ body {
 
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
 }
 
@@ -61,6 +160,9 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.02);
     box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 1px 0px rgba(255,255,255,0.05);
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card-tag {
@@ -81,6 +183,7 @@ body {
     color: var(--text-muted);
     font-size: 0.95rem;
     line-height: 1.6;
+    margin-bottom: 1.5rem;
 }
 
 .card-badge {
@@ -96,7 +199,7 @@ body {
 }
 
 .card-links {
-    margin-top: 2rem;
+    margin-top: auto;
     display: flex;
     gap: 1.5rem;
 }
@@ -109,284 +212,32 @@ body {
     letter-spacing: 1px;
     border-bottom: 1px solid var(--accent-copper);
     padding-bottom: 2px;
-    transition: var(--transition-smooth);
+    transition: all 0.3s ease;
 }
 
 .card-links a:hover {
     color: var(--accent-copper);
 }
 
-    z-index: -2;
-    pointer-events: none;
+/* ==========================================================================
+   6. SITE FOOTER
+   ========================================================================== */
+.site-footer {
+    padding: 3rem 4rem;
+    border-top: 1px solid rgba(244, 240, 234, 0.03);
+    text-align: center;
 }
 
-.monitor-scanlines {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.4) 50%);
-    background-size: 100% 4px;
-    z-index: 999;
-    pointer-events: none;
-    opacity: 0.4;
+.site-footer p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-.glow-ambiental {
-    position: fixed;
-    width: 100%; height: 100%; top: 0; left: 0;
-    background: 
-        radial-gradient(circle at 5vw 10vh, rgba(255, 102, 0, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 95vw 80vh, rgba(0, 255, 204, 0.06) 0%, transparent 50%);
-    z-index: -1;
-    pointer-events: none;
-}
-
-.contenedor {
-    width: 90%; max-width: 1200px; margin: 0 auto;
-}
-
-/* MENÚ INTERFAZ HUD */
-header {
-    background: rgba(3, 4, 7, 0.9);
-    border-bottom: 2px solid var(--blender);
-    box-shadow: 0 0 15px rgba(255, 102, 0, 0.2);
-    position: fixed; width: 100%; top: 0; z-index: 1000;
-}
-
-.nav-container {
-    display: flex; justify-content: space-between; align-items: center; padding: 12px 0;
-}
-
-/* CONTENEDOR DE MARCA HUD ALINEADO */
-.brand-hud {
-    display: flex;
-    align-items: flex-end; /* Enrasa los elementos por su base */
-    gap: 10px; /* Separación óptima */
-}
-
-/* Icono de la K con Glow de reborde potente y latido */
-.logo-k-alpha {
-    height: 42px; /* Un pelín más grande para equilibrar */
-    width: auto;
-    object-fit: contain;
-    display: block;
-    /* Doble reborde de luz naranja para que resalte el canal alpha */
-    filter: 
-        drop-shadow(1px 1px 0px rgba(255, 102, 0, 0.6))
-        drop-shadow(-1px -1px 0px rgba(255, 102, 0, 0.6))
-        drop-shadow(0 0 8px rgba(255, 102, 0, 0.85));
-    animation: neonLatido 3s ease-in-out infinite alternate;
-}
-
-/* Letras más grandes, más abajo y con el mismo reborde Glow */
-.logo-letras-alpha {
-    height: 24px; /* Letras un poco más grandes */
-    width: auto;
-    object-fit: contain;
-    display: block;
-    margin-bottom: -1px; /* Empuje extra hacia abajo para encajar la caja con la K */
-    /* Doble reborde de luz naranja y blanco fusionado */
-    filter: 
-        drop-shadow(1px 1px 0px rgba(255, 102, 0, 0.6))
-        drop-shadow(-1px -1px 0px rgba(255, 102, 0, 0.6))
-        drop-shadow(0 0 8px rgba(255, 102, 0, 0.7));
-    transition: filter 0.3s ease;
-}
-
-/* Efecto reactivo al pasar el ratón por encima de la marca */
-.brand-hud:hover .logo-k-alpha,
-.brand-hud:hover .logo-letras-alpha {
-    filter: 
-        drop-shadow(1px 1px 0px var(--blender))
-        drop-shadow(-1px -1px 0px var(--blender))
-        drop-shadow(0 0 15px rgba(255, 102, 0, 0.95));
-}
-
-@keyframes neonLatido {
-    0% { filter: drop-shadow(1px 1px 0px rgba(255, 102, 0, 0.5)) drop-shadow(-1px -1px 0px rgba(255, 102, 0, 0.5)) drop-shadow(0 0 6px rgba(255, 102, 0, 0.6)); }
-    100% { filter: drop-shadow(1px 1px 0px rgba(255, 102, 0, 0.7)) drop-shadow(-1px -1px 0px rgba(255, 102, 0, 0.7)) drop-shadow(0 0 14px rgba(255, 102, 0, 0.95)); }
-}
-
-nav a {
-    color: var(--texto-apagado); text-decoration: none; margin-left: 30px;
-    font-weight: bold; font-size: 0.9rem; letter-spacing: 1px; transition: all 0.3s;
-}
-
-nav a:hover {
-    color: var(--texto-brillante); text-shadow: var(--glow-naranja);
-}
-
-/* HERO WORKSPACE */
-.hero {
-    height: 75vh; display: flex; align-items: center; justify-content: center;
-    text-align: center; padding-top: 80px;
-    border-bottom: 1px dashed rgba(255, 102, 0, 0.15);
-}
-
-.terminal-badge {
-    display: inline-block; background: rgba(255, 102, 0, 0.1);
-    border: 1px solid var(--blender); color: var(--blender);
-    padding: 6px 14px; font-size: 0.8rem; font-weight: bold;
-    letter-spacing: 1px; margin-bottom: 25px; box-shadow: inset 0 0 10px rgba(255,102,0,0.2);
-}
-
-.hero p {
-    font-size: 1.2rem; color: var(--texto-apagado); max-width: 700px; margin: 0 auto 40px auto;
-}
-
-.btn-hud {
-    display: inline-flex; align-items: center; gap: 15px;
-    background: transparent; color: var(--blender);
-    border: 2px solid var(--blender); padding: 15px 35px;
-    font-weight: bold; text-decoration: none; letter-spacing: 1px;
-    transition: all 0.3s; box-shadow: inset 0 0 10px rgba(255,102,0,0.1);
-}
-
-.btn-hud:hover {
-    background: var(--blender); color: #fff; box-shadow: var(--glow-naranja); transform: translateY(-2px);
-}
-
-/* SECCIONES */
-.seccion {
-    padding: 100px 0;
-}
-
-.titulo-hud {
-    font-size: 2rem; font-weight: bold; margin-bottom: 60px;
-    letter-spacing: 2px; border-left: 4px solid var(--blender); padding-left: 15px;
-}
-
-.cuadricula {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 40px;
-}
-
-/* TARJETAS RENDERS PREMIUM */
-.tarjeta-premium {
-    background: var(--bg-modulo); border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: all 0.4s ease;
-}
-
-.tarjeta-marco {
-    height: 240px; overflow: hidden; position: relative; background: #000;
-}
-
-.tarjeta-marco img {
-    width: 100%; height: 100%; object-fit: cover; opacity: 0.8;
-    transition: transform 0.5s ease, opacity 0.3s;
-}
-
-.tarjeta-premium:hover {
-    border-color: var(--blender); box-shadow: var(--glow-naranja); transform: translateY(-5px);
-}
-
-.tarjeta-premium:hover img {
-    transform: scale(1.06); opacity: 1;
-}
-
-.tarjeta-cuerpo {
-    padding: 25px;
-}
-
-.sub-hud {
-    font-size: 0.75rem; color: var(--blender); font-weight: bold; letter-spacing: 1px; display: block; margin-bottom: 8px;
-}
-
-.tarjeta-cuerpo h3 {
-    font-size: 1.3rem; margin-bottom: 12px;
-}
-
-.tarjeta-cuerpo p {
-    color: var(--texto-apagado); font-size: 0.95rem;
-}
-
-/* MÓDULOS DE ADDONS CYBER */
-.modulo-addon {
-    background: var(--bg-modulo); border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 40px; position: relative; transition: all 0.4s ease;
-}
-
-.modulo-esquina {
-    position: absolute; top: -1px; right: -1px; width: 25px; height: 25px;
-    border-top: 3px solid var(--blender); border-right: 3px solid var(--blender);
-}
-
-.modulo-esquina.cian {
-    border-top-color: var(--cian); border-right-color: var(--cian);
-}
-
-.addon-top {
-    display: flex; align-items: center; gap: 20px; margin-bottom: 25px;
-}
-
-.addon-radar {
-    font-size: 2rem; color: var(--blender); background: rgba(255, 102, 0, 0.05);
-    width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;
-    border: 1px solid rgba(255, 102, 0, 0.2);
-}
-
-.addon-radar.cian {
-    color: var(--cian); background: rgba(0, 255, 204, 0.05);
-    border-color: rgba(0, 255, 204, 0.2);
-}
-
-.addon-top h3 {
-    font-size: 1.35rem; font-weight: bold;
-}
-
-.tag-hud {
-    display: inline-block; font-size: 0.7rem; font-weight: bold; padding: 2px 8px; margin-top: 5px;
-}
-
-.tag-naranja { color: var(--blender); background: rgba(255, 102, 0, 0.1); }
-.tag-hud.tag-cian { color: var(--cian); background: rgba(0, 255, 204, 0.1); }
-
-.modulo-desc {
-    color: var(--texto-apagado); font-size: 0.95rem; margin-bottom: 35px; min-height: 70px;
-}
-
-.modulo-addon:hover {
-    border-color: var(--blender); box-shadow: var(--glow-naranja); transform: translateY(-5px);
-}
-
-.modulo-addon:hover .modulo-esquina.cian {
-    border-top-color: var(--blender); border-right-color: var(--blender);
-}
-
-.modulo-addon:hover:has(.cian) {
-    border-color: var(--cian); box-shadow: var(--glow-cyan);
-}
-
-/* BOTONES TÁCTICOS */
-.btn-store-hud {
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-    width: 100%; padding: 14px; text-decoration: none; font-weight: bold; font-size: 0.85rem;
-    transition: all 0.3s;
-}
-
-.btn-gumroad-hud {
-    background: #fff; color: #000;
-}
-
-.btn-gumroad-hud:hover {
-    background: var(--blender); color: #fff; box-shadow: var(--glow-naranja);
-}
-
-.btn-cian-hud {
-    background: transparent; color: var(--cian); border: 1px solid var(--cian);
-}
-
-.btn-cian-hud:hover {
-    background: var(--cian); color: #000; box-shadow: var(--glow-cyan);
-}
-
-/* FOOTER HUD */
-footer {
-    padding: 60px 0; background: #010204;
-}
-
-.linea-hud {
-    width: 100%; height: 1px; background: rgba(255, 255, 255, 0.05); margin-bottom: 30px;
-}
-
-.footer-hud {
-    text-align: center; color: var(--texto-apagado); font-size: 0.8rem; letter-spacing: 1px;
+@media (max-width: 768px) {
+    .navbar { padding: 1.5rem 2rem; }
+    .nav-links { gap: 1.2rem; }
+    .hero-title { font-size: 3rem; letter-spacing: 6px; }
+    .section-block { padding: 2rem 2rem; }
 }
