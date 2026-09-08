@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kurve3D | Advanced Blender Addons</title>
     
-    <!-- ESTILOS INTERNOS PARA EVITAR BLOQUEOS DE GITHUB -->
+    <!-- ESTILOS INTEGRADOS ESTILO APPLE PREMIUM -->
     <style>
         :root {
-            --bg-main: #0c0f12;          
-            --bg-card: #14181f;          
-            --text-cream: #f4f0ea;       
-            --text-muted: rgba(244, 240, 234, 0.6); 
-            --accent-copper: #c57d4a;    
-            --accent-glow: rgba(197, 125, 74, 0.15); 
-            --font-sans: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            --bg-main: #000000;          /* Negro absoluto estilo Apple Pro */
+            --bg-row: #0a0a0c;           /* Fondo de fila ultra oscuro */
+            --text-cream: #f5f5f7;       /* Blanco/Marfil Apple */
+            --text-muted: #86868b;       /* Gris atenuado Apple para descripciones */
+            --accent-copper: #c57d4a;    /* Cobre característico de Kurve3D */
+            --accent-glow: rgba(197, 125, 74, 0.25); 
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --font-mono: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
         }
 
         * {
@@ -31,206 +32,234 @@
             background-color: var(--bg-main);
             color: var(--text-cream);
             font-family: var(--font-sans);
-            letter-spacing: 0.5px;
-            line-height: 1.6;
+            letter-spacing: -0.01em;
+            line-height: 1.47059;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
+        /* BARRA DE NAVEGACIÓN ESTILO APPLE */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 4rem;
+            padding: 0 4rem;
+            height: 48px;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: linear-gradient(to bottom, rgba(12, 15, 18, 0.95) 60%, rgba(12, 15, 18, 0));
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
         }
 
         .brand-text {
-            font-size: 1.3rem;
-            font-weight: 800;
-            letter-spacing: 3px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1px;
             text-transform: uppercase;
         }
 
         .accent-3d {
             color: var(--accent-copper);
-            font-weight: 900;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 2.5rem;
+            font-weight: 700;
         }
 
         .nav-links a {
             color: var(--text-cream);
             text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
+            font-size: 0.75rem;
+            font-weight: 400;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            opacity: 0.7;
-            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
         }
 
         .nav-links a:hover {
             opacity: 1;
-            color: var(--accent-copper);
         }
 
+        /* SECCIÓN HERO */
         .main-container {
-            padding-top: 100px;
+            padding-top: 48px;
         }
 
         .hero {
-            min-height: 50vh;
+            min-height: 40vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 2rem;
-            position: relative;
-            background: radial-gradient(circle, var(--accent-glow) 0%, rgba(12, 15, 18, 0) 65%);
         }
 
         .hero-title {
-            font-size: 5rem;
-            font-weight: 800;
-            letter-spacing: 12px;
-            margin-bottom: 1rem;
-            text-indent: 12px;
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
             color: var(--text-cream);
-            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.7); 
         }
 
         .hero-subtitle {
-            font-size: 1.1rem;
+            font-size: 1.25rem;
             max-width: 600px;
             color: var(--text-muted);
-            letter-spacing: 1px;
-            font-weight: 300;
+            font-weight: 400;
+            letter-spacing: -0.01em;
         }
 
+        /* DISPOSICIÓN EN FILAS HORIZONTALES */
         .section-block {
-            padding: 4rem 4rem;
-            max-width: 1200px;
+            padding: 2rem 4rem 8rem 4rem;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
         .section-title {
-            font-size: 1.4rem;
-            letter-spacing: 3px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            margin-bottom: 2.5rem;
-            color: var(--text-cream);
-            border-bottom: 1px solid rgba(244, 240, 234, 0.08);
-            padding-bottom: 0.6rem;
+            margin-bottom: 2rem;
+            color: var(--text-muted);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.5rem;
         }
 
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .premium-card {
-            background-color: var(--bg-card);
-            border-radius: 6px;
-            padding: 2.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.02);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 1px 0px rgba(255,255,255,0.05);
-            position: relative;
+        .row-container {
             display: flex;
             flex-direction: column;
+            gap: 1.2rem; /* Espacio limpio entre filas */
+        }
+
+        /* FILA INDIVIDUAL (Estilo Apple + Bordes Iluminados) */
+        .addon-row {
+            background-color: var(--bg-row);
+            border-radius: 12px;
+            padding: 2rem 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
             justify-content: space-between;
+            align-items: center;
+            position: relative;
+            transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
         }
 
-        .card-tag {
-            font-size: 0.75rem;
-            letter-spacing: 1.5px;
-            color: var(--accent-copper);
+        /* Efecto de borde iluminado y resplandor al pasar el ratón */
+        .addon-row:hover {
+            border-color: var(--accent-copper);
+            box-shadow: 0 0 25px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        /* Contenido izquierdo de la fila */
+        .addon-info {
+            max-width: 65%;
+        }
+
+        .meta-line {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
             margin-bottom: 0.5rem;
-            font-weight: 700;
         }
 
-        .premium-card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
+        .addon-tag {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            color: var(--accent-copper);
             font-weight: 600;
+            text-transform: uppercase;
         }
 
-        .premium-card p {
+        .addon-badge {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.1rem 0.5rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .addon-row h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.4rem;
+        }
+
+        .addon-row p {
             color: var(--text-muted);
             font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
+            line-height: 1.5;
         }
 
-        .card-badge {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            font-size: 0.7rem;
-            background-color: rgba(197, 125, 74, 0.1);
-            color: var(--accent-copper);
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            border: 1px solid rgba(197, 125, 74, 0.2);
-        }
-
-        .card-links {
-            margin-top: auto;
+        /* Contenido derecho de la fila (Enlaces/Botones) */
+        .addon-actions {
             display: flex;
             gap: 1.5rem;
+            align-items: center;
         }
 
-        .card-links a {
+        .addon-actions a {
             color: var(--text-cream);
             text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            border-bottom: 1px solid var(--accent-copper);
-            padding-bottom: 2px;
-            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            transition: color 0.2s ease;
         }
 
-        .card-links a:hover {
-            color: var(--accent-copper);
+        /* Botón de enlace principal estilo enlace Apple (con flecha) */
+        .addon-actions .link-main {
+            color: #0066cc; /* Azul Apple */
+        }
+        .addon-actions .link-main:hover {
+            color: #0077ed;
+            text-decoration: underline;
         }
 
+        /* Botón estilo Coming Soon o Secundario */
+        .addon-actions .link-sec {
+            color: var(--text-muted);
+        }
+        .addon-actions .link-sec:hover {
+            color: var(--text-cream);
+        }
+
+        /* PIE DE PÁGINA */
         .site-footer {
             padding: 3rem 4rem;
-            border-top: 1px solid rgba(244, 240, 234, 0.03);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
             text-align: center;
         }
 
         .site-footer p {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            font-family: var(--font-sans);
         }
 
+        /* RESPONSIVE */
         @media (max-width: 768px) {
-            .navbar { padding: 1.5rem 2rem; }
-            .nav-links { gap: 1.2rem; }
-            .hero-title { font-size: 3rem; letter-spacing: 6px; }
+            .navbar { padding: 0 2rem; }
             .section-block { padding: 2rem 2rem; }
+            .addon-row { flex-direction: column; align-items: flex-start; gap: 1.5rem; padding: 1.5rem; }
+            .addon-info { max-width: 100%; }
+            .hero-title { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -246,71 +275,42 @@
         </nav>
     </header>
 
-    <!-- SECCIÓN HERO PRINCIPAL -->
+    <!-- SECCIÓN HERO -->
     <main class="main-container">
         <section class="hero">
             <h1 class="hero-title">KURVE<span class="accent-3d">3D</span></h1>
             <p class="hero-subtitle">Advanced Pipeline & Utility Addons for Blender</p>
         </section>
 
-        <!-- SECCIÓN EXCLUSIVA DE ADDONS (Tus 4 herramientas) -->
+        <!-- SECCIÓN EN FILAS HORIZONTALES -->
         <section id="addons" class="section-block">
             <h2 class="section-title">Blender Addons</h2>
-            <div class="card-grid">
+            <div class="row-container">
                 
-                <!-- ADDON 1: KurveSpline -->
-                <div class="premium-card">
-                    <div class="card-badge">BLENDER 5.1+ READY</div>
-                    <div class="card-tag">MODELING / SPLINES</div>
-                    <h3>KurveSpline</h3>
-                    <p>Bringing the advanced 3ds Max spline creation and manipulation toolset natively into the Blender viewport workflow.</p>
-                    <div class="card-links">
-                        <a href="#" target="_blank" class="link-dev">GUMROAD [DEV]</a>
-                        <a href="#" target="_blank" class="link-dev">SUPERHIVE [DEV]</a>
+                <!-- ROW 1: KurveSpline -->
+                <div class="addon-row">
+                    <div class="addon-info">
+                        <div class="meta-line">
+                            <span class="addon-tag">Modeling / Splines</span>
+                            <span class="addon-badge">Blender 5.1+ Ready</span>
+                        </div>
+                        <h3>KurveSpline</h3>
+                        <p>Bringing the advanced 3ds Max spline creation and manipulation toolset natively into the Blender viewport workflow.</p>
+                    </div>
+                    <div class="addon-actions">
+                        <a href="#" target="_blank" class="link-main">Gumroad &rarr;</a>
+                        <a href="#" target="_blank" class="link-sec">Superhive</a>
                     </div>
                 </div>
 
-                <!-- ADDON 2: K Forge -->
-                <div class="premium-card">
-                    <div class="card-badge">BLENDER 5.2 LTS READY</div>
-                    <div class="card-tag">MATERIALS / TEXTURING</div>
-                    <h3>K Forge</h3>
-                    <p>Advanced Material paint & Texture Authoring for Blender 5.2 LTS.</p>
-                    <div class="card-links">
-                        <a href="#" target="_blank" class="link-dev">COMING SOON</a>
+                <!-- ROW 2: K Forge -->
+                <div class="addon-row">
+                    <div class="addon-info">
+                        <div class="meta-line">
+                            <span class="addon-tag">Materials / Texturing</span>
+                            <span class="addon-badge">Blender 5.2 LTS</span>
+                        </div>
+                        <h3>K Forge</h3>
+                        <p>Advanced Material paint & Texture Authoring for Blender 5.2 LTS.</p>
                     </div>
-                </div>
-
-                <!-- ADDON 3: K-mind -->
-                <div class="premium-card">
-                    <div class="card-badge">IN DEVELOPMENT</div>
-                    <div class="card-tag">AI / CROWDS & NAVIGATION</div>
-                    <h3>K-mind</h3>
-                    <p>Add-on profesional para inteligencia artificial, navegación de personajes y simulación de multitudes.</p>
-                    <div class="card-links">
-                        <a href="#" target="_blank" class="link-dev">COMING SOON</a>
-                    </div>
-                </div>
-
-                <!-- ADDON 4: K Propath -->
-                <div class="premium-card">
-                    <div class="card-badge">IN DEVELOPMENT</div>
-                    <div class="card-tag">ANIMATION / CAMERA PATHS</div>
-                    <h3>K Propath</h3>
-                    <p>2-click automation tool for camera and object paths. Features constant velocity, roller-coaster physics style, automatic or manual tilt, and dynamic rotations.</p>
-                    <div class="card-links">
-                        <a href="#" target="_blank" class="link-dev">COMING SOON</a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-    </main>
-
-    <!-- PIE DE PÁGINA -->
-    <footer class="site-footer">
-        <p>&copy; 2026 Kurve3D Portfolio. All systems operating at optimal refresh rates.</p>
-    </footer>
-
-</body>
-</html>
+                    <div class="addon-actions">
