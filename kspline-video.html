@@ -1,1 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurve3D | KURVESPLINE Showcase</title>
+    <style>
+        :root { --bg: #000; --card: #0a0a0c; --cream: #f5f5f7; --muted: #86868b; --copper: #c57d4a; --glow: rgba(197,125,74,0.35); }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { background:var(--bg); color:var(--cream); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; -webkit-font-smoothing:antialiased; }
+        
+        .video-container { max-width: 1000px; margin: 0 auto; padding: 3rem 2rem 5rem 2rem; display: flex; flex-direction: column; gap: 2rem; }
+        
+        /* Botón cerrar pestaña */
+        .back-btn { color: var(--muted); text-decoration: none; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: color 0.2s; width: max-content; }
+        .back-btn:hover { color: var(--cream); }
+        
+        /* Cabecera del Addon */
+        .video-header { border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 1rem; }
+        .addon-name { font-size: 2.2rem; font-weight: 700; color: #fff; letter-spacing: -0.02em; margin-bottom: 0.3rem; text-transform: uppercase; }
+        .tag { font-family:monospace; font-size:0.65rem; color:var(--copper); font-weight:600; text-transform:uppercase; margin-bottom: 0.5rem; display: inline-block; letter-spacing: 0.5px; }
+        
+        /* CAJA PRINCIPAL DE VIDEO 16/9 CON BORDE COBRE ILUMINADO */
+        .main-video-screen { 
+            width: 100%; 
+            aspect-ratio: 16/9; 
+            background: var(--card); 
+            border-radius: 12px; 
+            border: 1px solid var(--copper); 
+            box-shadow: 0 0 25px var(--glow); 
+            overflow: hidden; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            position: relative;
+        }
+        
+        /* Texto provisional del reproductor */
+        .placeholder-text { color: var(--muted); font-size: 1.1rem; font-weight: 500; letter-spacing: 0.5px; }
+        .current-video-title { color: var(--copper); font-size: 0.85rem; font-family: monospace; margin-top: 0.5rem; text-transform: uppercase; }
+
+        /* SECCIÓN DE SELECCIÓN DE VIDEOS */
+        .playlist-section { margin-top: 1rem; }
+        .playlist-title { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; letter-spacing: 0.5px; }
+        
+        /* Grid de 4 tarjetas pequeñas */
+        .video-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+        
+        /* Tarjetas pequeñas de video */
+        .video-thumb-card { 
+            background: var(--card); 
+            border: 1px solid rgba(255,255,255,0.05); 
+            border-radius: 8px; 
+            padding: 1rem; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 0.8rem; 
+            cursor: pointer; 
+            transition: all 0.3s;
+            min-height: 110px;
+            justify-content: space-between;
+        }
+        .video-thumb-card:hover { border-color: var(--copper); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
+        .video-thumb-card.active { border-color: var(--copper); background: rgba(197,125,74,0.05); }
+        
+        /* Mini pantalla interna 16/9 simulada */
+        .thumb-screen { width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 4px; border: 1px solid rgba(255,255,255,0.03); }
+        
+        /* Texto debajo de cada tarjeta */
+        .video-label { color: var(--muted); font-size: 0.75rem; font-weight: 500; text-align: center; font-family: monospace; }
+        .video-thumb-card:hover .video-label, .video-thumb-card.active .video-label { color: var(--cream); }
+
+        .footer { padding:2.5rem 2rem; border-top:1px solid rgba(255,255,255,0.05); text-align:center; font-size:0.65rem; color:var(--muted); margin-top: 4rem; }
+        
+        @media (max-width: 768px) { .video-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 480px) { .video-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <main class="video-container">
+        <!-- Cerrar pestaña -->
+        <a href="javascript:window.close();" class="back-btn">&larr; Close Window</a>
+        
+        <!-- Nombre del Addon -->
+        <header class="video-header">
+            <div class="tag">Modeling / Splines</div>
+            <h1 class="addon-name" id="addonTitle">KURVESPLINE</h1>
+        </header>
+
+        <!-- CAJA DE VIDEO PRINCIPAL (16/9) -->
+        <div class="main-video-screen">
+            <!-- Cuando tengas los videos, aquí meterás la etiqueta <video> o <iframe> -->
+            <p class="placeholder-text">Video Player Placeholder</p>
+            <p class="current-video-title" id="mainVideoLabel">Viewing: Video 01</p>
+        </div>
+
+        <!-- SELECTOR DE VIDEOS (4 TARJETAS PEQUEÑAS) -->
+        <section class="playlist-section">
+            <h2 class="playlist-title">Available Features</h2>
+            <div class="video-grid">
+                
+                <!-- TARJETA VIDEO 01 -->
+                <div class="video-thumb-card active" onclick="selectVideo('Video 01', this)">
+                    <div class="thumb-screen"></div>
+                    <div class="video-label">Video 01</div>
+                </div>
+
+                <!-- TARJETA VIDEO 02 -->
+                <div class="video-thumb-card" onclick="selectVideo('Video 02', this)">
+                    <div class="thumb-screen"></div>
+                    <div class="video-label">Video 02</div>
+                </div>
+
+                <!-- TARJETA VIDEO 03 -->
+                <div class="video-thumb-card" onclick="selectVideo('Video 03', this)">
+                    <div class="thumb-screen"></div>
+                    <div class="video-label">Video 03</div>
+                </div>
+
+                <!-- TARJETA VIDEO 04 -->
+                <div class="video-thumb-card" onclick="selectVideo('Video 04', this)">
+                    <div class="thumb-screen"></div>
+                    <div class="video-label">Video 04</div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer"><p>&copy; 2026 Kurve3D. All rights reserved.</p></footer>
+
+    <!-- Lógica simple para interactuar en la maqueta -->
+    <script>
+        function selectVideo(videoName, element) {
+            // Actualiza el texto de la pantalla principal
+            document.getElementById('mainVideoLabel').innerText = 'Viewing: ' + videoName;
+            
+            // Quita la clase activa de todas las tarjetas
+            document.querySelectorAll('.video-thumb-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // Añade la clase activa a la tarjeta seleccionada
+            element.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
 
