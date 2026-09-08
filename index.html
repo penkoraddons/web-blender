@@ -8,11 +8,11 @@
     <!-- ESTILOS INTEGRADOS ESTILO APPLE PREMIUM -->
     <style>
         :root {
-            --bg-main: #000000;          /* Negro absoluto estilo Apple Pro */
-            --bg-row: #0a0a0c;           /* Fondo de fila ultra oscuro */
-            --text-cream: #f5f5f7;       /* Blanco/Marfil Apple */
-            --text-muted: #86868b;       /* Gris atenuado Apple para descripciones */
-            --accent-copper: #c57d4a;    /* Cobre característico de Kurve3D */
+            --bg-main: #000000;          
+            --bg-row: #0a0a0c;           
+            --text-cream: #f5f5f7;       
+            --text-muted: #86868b;       
+            --accent-copper: #c57d4a;    
             --accent-glow: rgba(197, 125, 74, 0.25); 
             --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             --font-mono: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
@@ -44,13 +44,13 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 4rem;
-            height: 48px;
+            height: 64px; /* Aumentado para dar aire al logo */
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -59,12 +59,11 @@
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
         }
 
-        /* Configuración del tamaño del nuevo Logo */
+        /* TAMAÑO DEL LOGO EN LA NAVBAR CORREGIDO */
         .nav-logo-img {
-            height: 24px; /* Tamaño optimizado para la barra Apple */
+            height: 38px; /* Subido de 24px para que se distinga bien */
             width: auto;
             object-fit: contain;
             display: block;
@@ -78,20 +77,15 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             opacity: 0.8;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            opacity: 1;
         }
 
         /* SECCIÓN HERO */
         .main-container {
-            padding-top: 48px;
+            padding-top: 64px;
         }
 
         .hero {
-            min-height: 40vh;
+            min-height: 45vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -100,11 +94,12 @@
             padding: 2rem;
         }
 
+        /* TAMAÑO DEL LOGO CENTRADO CORREGIDO */
         .hero-title-img {
-            height: 80px; /* Tamaño del logo grande en el centro de la pantalla */
+            height: 140px; /* Subido de 80px para que tenga presencia Pro */
             width: auto;
             object-fit: contain;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .hero-subtitle {
@@ -139,11 +134,11 @@
             gap: 1.2rem;
         }
 
-        /* FILA INDIVIDUAL (Estilo Apple + Bordes Iluminados) */
+        /* FILA INDIVIDUAL */
         .addon-row {
             background-color: var(--bg-row);
             border-radius: 12px;
-            padding: 2rem 2.5rem;
+            padding: 2.2rem 2.5rem;
             border: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
             justify-content: space-between;
@@ -152,10 +147,9 @@
             transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
         }
 
-        /* Efecto de borde iluminado al pasar el ratón */
         .addon-row:hover {
             border-color: var(--accent-copper);
-            box-shadow: 0 0 25px var(--accent-glow);
+            box-shadow: 0 0 30px var(--accent-glow);
             transform: translateY(-2px);
         }
 
@@ -218,17 +212,15 @@
         }
 
         .addon-actions .link-main {
-            color: var(--accent-copper); /* Cambiado de azul Apple a Cobre corporativo */
+            color: var(--accent-copper); 
         }
+        
         .addon-actions .link-main:hover {
             text-decoration: underline;
         }
 
         .addon-actions .link-sec {
             color: var(--text-muted);
-        }
-        .addon-actions .link-sec:hover {
-            color: var(--text-cream);
         }
 
         .site-footer {
@@ -240,7 +232,6 @@
         .site-footer p {
             font-size: 0.75rem;
             color: var(--text-muted);
-            font-family: var(--font-sans);
         }
 
         @media (max-width: 768px) {
@@ -256,7 +247,6 @@
     <!-- BARRA DE NAVEGACIÓN -->
     <header class="navbar">
         <div class="logo-area">
-            <!-- AQUÍ SE LLAMA A TU NUEVA IMAGEN DE LOGO -->
             <img src="./logo.png" alt="Kurve3D" class="nav-logo-img">
         </div>
         <nav class="nav-links">
@@ -267,12 +257,11 @@
     <!-- SECCIÓN HERO -->
     <main class="main-container">
         <section class="hero">
-            <!-- LOGO GRANDE CENTRADO EN LA PÁGINA -->
             <img src="./logo.png" alt="Kurve3D Logo" class="hero-title-img">
             <p class="hero-subtitle">Advanced Pipeline & Utility Addons for Blender</p>
         </section>
 
-        <!-- SECCIÓN EN FILAS HORIZONTALES -->
+        <!-- SECCIÓN DE LOS 4 ADDONS EN FILAS -->
         <section id="addons" class="section-block">
             <h2 class="section-title">Blender Addons</h2>
             <div class="row-container">
@@ -312,3 +301,15 @@
                 <div class="addon-row">
                     <div class="addon-info">
                         <div class="meta-line">
+                            <span class="addon-tag">AI / Crowds & Navigation</span>
+                            <span class="addon-badge">In Development</span>
+                        </div>
+                        <h3>K-mind</h3>
+                        <p>Add-on profesional para inteligencia artificial, navegación de personajes y simulación de multitudes.</p>
+                    </div>
+                    <div class="addon-actions">
+                        <span class="link-sec">Coming Soon</span>
+                    </div>
+                </div>
+
+                <!-- ROW 4: K Propath -->
