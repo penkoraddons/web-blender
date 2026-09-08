@@ -7,231 +7,42 @@
     <style>
         :root {
             --bg-main: #000000;          
-            --bg-row: #0a0a0c;           
+            --bg-card: #0a0a0c;           
             --text-cream: #f5f5f7;       
             --text-muted: #86868b;       
             --accent-copper: #c57d4a;    
             --accent-glow: rgba(197, 125, 74, 0.25); 
-            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            --font-mono: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-mono: monospace;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-cream);
-            font-family: var(--font-sans);
-            letter-spacing: -0.01em;
-            line-height: 1.47059;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 4rem;
-            height: 64px; 
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-logo-img {
-            height: 38px; 
-            width: auto;
-            object-fit: contain;
-            display: block;
-        }
-
-        .nav-links a {
-            color: var(--text-cream);
-            text-decoration: none;
-            font-size: 0.75rem;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.8;
-        }
-
-        .main-container {
-            padding-top: 64px;
-        }
-
-        .hero {
-            min-height: 45vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .hero-title-img {
-            height: 140px; 
-            width: auto;
-            object-fit: contain;
-            margin-bottom: 2rem;
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            max-width: 600px;
-            color: var(--text-muted);
-            font-weight: 400;
-            letter-spacing: -0.01em;
-        }
-
-        .section-block {
-            padding: 2rem 4rem 8rem 4rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            color: var(--text-muted);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 0.5rem;
-        }
-
-        .row-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-
-        .addon-row {
-            background-color: var(--bg-row);
-            border-radius: 12px;
-            padding: 2.2rem 2.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-            transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
-        }
-
-        .addon-row:hover {
-            border-color: var(--accent-copper);
-            box-shadow: 0 0 30px var(--accent-glow);
-            transform: translateY(-2px);
-        }
-
-        .addon-info {
-            max-width: 65%;
-        }
-
-        .meta-line {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .addon-tag {
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            letter-spacing: 1px;
-            color: var(--accent-copper);
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .addon-badge {
-            font-family: var(--font-mono);
-            font-size: 0.65rem;
-            color: var(--text-muted);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 0.1rem 0.5rem;
-            border-radius: 4px;
-            text-transform: uppercase;
-        }
-
-        .addon-row h3 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            margin-bottom: 0.4rem;
-        }
-
-        .addon-row p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .addon-actions {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .addon-actions a {
-            color: var(--text-cream);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: -0.01em;
-            transition: color 0.2s ease;
-        }
-
-        .addon-actions .link-main {
-            color: var(--accent-copper); 
-        }
-        
-        .addon-actions .link-main:hover {
-            text-decoration: underline;
-        }
-
-        .addon-actions .link-sec {
-            color: var(--text-muted);
-        }
-
-        .site-footer {
-            padding: 3rem 4rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            text-align: center;
-        }
-
-        .site-footer p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        @media (max-width: 768px) {
-            .navbar { padding: 0 2rem; }
-            .section-block { padding: 2rem 2rem; }
-            .addon-row { flex-direction: column; align-items: flex-start; gap: 1.5rem; padding: 1.5rem; }
-            .addon-info { max-width: 100%; }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-main); color: var(--text-cream); font-family: var(--font-sans); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 0 4rem; height: 64px; position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .nav-logo-img { height: 38px; width: auto; object-fit: contain; display: block; }
+        .nav-links a { color: var(--text-cream); text-decoration: none; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; }
+        .main-container { padding-top: 64px; }
+        .hero { min-height: 35vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem; }
+        .hero-title-img { height: 140px; width: auto; object-fit: contain; margin-bottom: 2rem; }
+        .hero-subtitle { font-size: 1.25rem; max-width: 600px; color: var(--text-muted); font-weight: 400; }
+        .section-block { padding: 2rem 4rem 8rem 4rem; max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 1.2rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 2rem; color: var(--text-muted); border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 0.5rem; }
+        .card-grid-four { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+        .addon-card-vert { background-color: var(--bg-card); border-radius: 12px; padding: 2rem 1.5rem; border: 1px solid rgba(255, 255, 255, 0.05); display: flex; flex-direction: column; justify-content: space-between; min-height: 360px; position: relative; transition: border-color 0.4s, box-shadow 0.4s, transform 0.3s; }
+        .addon-card-vert:hover { border-color: var(--accent-copper); box-shadow: 0 0 30px var(--accent-glow); transform: translateY(-4px); }
+        .meta-line { display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; margin-bottom: 1rem; }
+        .addon-tag { font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent-copper); font-weight: 600; text-transform: uppercase; }
+        .addon-badge { font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-muted); border: 1px solid rgba(255, 255, 255, 0.15); padding: 0.1rem 0.4rem; border-radius: 4px; text-transform: uppercase; }
+        .addon-card-vert h3 { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.6rem; }
+        .addon-card-vert p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 1.5rem; }
+        .addon-actions { display: flex; gap: 1.2rem; align-items: center; margin-top: auto; }
+        .addon-actions a, .addon-actions span { text-decoration: none; font-size: 0.8rem; font-weight: 500; }
+        .addon-actions .link-main { color: var(--accent-copper); }
+        .addon-actions .link-main:hover { text-decoration: underline; }
+        .addon-actions .link-sec { color: var(--text-muted); }
+        .site-footer { padding: 3rem 4rem; border-top: 1px solid rgba(255, 255, 255, 0.05); text-align: center; font-size: 0.75rem; color: var(--text-muted); }
+        @media (max-width: 1024px) { .card-grid-four { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px) { .navbar { padding: 0 2rem; } .section-block { padding: 2rem 2rem; } .card-grid-four { grid-template-columns: 1fr; } .addon-card-vert { min-height: auto; } }
     </style>
 </head>
 <body>
@@ -253,10 +64,11 @@
 
         <section id="addons" class="section-block">
             <h2 class="section-title">Blender Addons</h2>
-            <div class="row-container">
+            <div class="card-grid-four">
                 
-                <div class="addon-row">
-                    <div class="addon-info">
+                <!-- CARD 1 -->
+                <div class="addon-card-vert">
+                    <div>
                         <div class="meta-line">
                             <span class="addon-tag">Modeling / Splines</span>
                             <span class="addon-badge">Blender 5.1+ Ready</span>
@@ -270,8 +82,9 @@
                     </div>
                 </div>
 
-                <div class="addon-row">
-                    <div class="addon-info">
+                <!-- CARD 2 -->
+                <div class="addon-card-vert">
+                    <div>
                         <div class="meta-line">
                             <span class="addon-tag">Materials / Texturing</span>
                             <span class="addon-badge">Blender 5.2 LTS</span>
@@ -284,8 +97,9 @@
                     </div>
                 </div>
 
-                <div class="addon-row">
-                    <div class="addon-info">
+                <!-- CARD 3 -->
+                <div class="addon-card-vert">
+                    <div>
                         <div class="meta-line">
                             <span class="addon-tag">AI / Crowds & Navigation</span>
                             <span class="addon-badge">In Development</span>
@@ -298,8 +112,9 @@
                     </div>
                 </div>
 
-                <div class="addon-row">
-                    <div class="addon-info">
+                <!-- CARD 4 -->
+                <div class="addon-card-vert">
+                    <div>
                         <div class="meta-line">
                             <span class="addon-tag">Animation / Camera Paths</span>
                             <span class="addon-badge">In Development</span>
@@ -316,3 +131,9 @@
         </section>
     </main>
 
+    <footer class="site-footer">
+        <p>&copy; 2026 Kurve3D. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
