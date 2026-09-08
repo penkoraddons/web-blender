@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kurve3D | Advanced Blender Addons</title>
     
-    <!-- ESTILOS INTEGRADOS ESTILO APPLE PREMIUM CORREGIDOS -->
+    <!-- ESTILOS INTEGRADOS ESTILO APPLE PREMIUM -->
     <style>
         :root {
             --bg-main: #000000;          
@@ -84,7 +84,7 @@
         }
 
         .hero {
-            min-height: 35vh;
+            min-height: 45vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -129,20 +129,18 @@
         .row-container {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.2rem;
         }
 
-        /* FILA INDIVIDUAL CORREGIDA CON ALTO MÍNIMO SEGURADO */
+        /* FILA INDIVIDUAL */
         .addon-row {
             background-color: var(--bg-row);
             border-radius: 12px;
-            padding: 2.5rem;
-            min-height: 160px; /* Evita que la tarjeta colapse si el texto es corto */
+            padding: 2.2rem 2.5rem;
             border: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 2rem;
             position: relative;
             transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
         }
@@ -154,15 +152,14 @@
         }
 
         .addon-info {
-            flex: 1; /* Ocupa todo el espacio izquierdo disponible de forma dinámica */
-            max-width: 75%;
+            max-width: 65%;
         }
 
         .meta-line {
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.5rem;
         }
 
         .addon-tag {
@@ -188,7 +185,7 @@
             font-size: 1.8rem;
             font-weight: 600;
             letter-spacing: -0.01em;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
 
         .addon-row p {
@@ -201,7 +198,6 @@
             display: flex;
             gap: 1.5rem;
             align-items: center;
-            white-space: nowrap; /* Evita que los botones se rompan en dos líneas */
         }
 
         .addon-actions a {
@@ -239,7 +235,7 @@
         @media (max-width: 768px) {
             .navbar { padding: 0 2rem; }
             .section-block { padding: 2rem 2rem; }
-            .addon-row { flex-direction: column; align-items: flex-start; gap: 1.5rem; padding: 1.5rem; min-height: auto; }
+            .addon-row { flex-direction: column; align-items: flex-start; gap: 1.5rem; padding: 1.5rem; }
             .addon-info { max-width: 100%; }
         }
     </style>
@@ -310,3 +306,12 @@
                         <p>Add-on profesional para inteligencia artificial, navegación de personajes y simulación de multitudes.</p>
                     </div>
                     <div class="addon-actions">
+                        <span class="link-sec">Coming Soon</span>
+                    </div>
+                </div>
+
+                <!-- ROW 4: K Propath -->
+                <div class="addon-row">
+                    <div class="addon-info">
+                        <div class="meta-line">
+                            <span class="addon-tag">Animation / Camera Paths</span>
