@@ -1,116 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kurve3D | Advanced Blender Addons</title>
-    <style>
-        :root { --bg: #000; --card: #0a0a0c; --cream: #f5f5f7; --muted: #86868b; --copper: #c57d4a; --glow: rgba(197,125,74,0.25); }
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { background:var(--bg); color:var(--cream); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; -webkit-font-smoothing:antialiased; }
-        .main-container { padding-top: 3rem; }
-        .hero { min-height:22vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:1rem; }
-        
-        /* LOGO MÁS GRANDE (Aumentado de 85px a 170px) */
-        .hero-title-img { height:170px; margin-bottom:1rem; width:auto; object-fit:contain; }
-        
-        .hero-subtitle { font-size:0.95rem; max-width:600px; color:var(--muted); letter-spacing: -0.01em; }
-        .section-block { padding:1.5rem 2rem 4rem 2rem; max-width:1200px; margin:0 auto; }
-        .section-title { font-size:0.9rem; font-weight:600; text-transform:uppercase; margin-bottom:1.5rem; color:var(--muted); border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.3rem; letter-spacing: 0.5px; }
-        
-        /* SEPARACIÓN AUMENTADA ENTRE TARJETAS (GAP DE 1.5rem) */
-        .grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; }
-        
-        .card { background:var(--card); border-radius:10px; border:1px solid rgba(255,255,255,0.05); display:flex; flex-direction:column; min-height:380px; overflow:hidden; transition:all 0.3s; }
-        .card:hover { border-color:var(--copper); box-shadow:0 0 20px var(--glow); transform:translateY(-3px); }
-        .img-box { width:100%; aspect-ratio:16/10; position:relative; background:#000; border-bottom:1px solid rgba(255,255,255,0.05); }
-        .cover { width:100%; height:100%; object-fit:cover; opacity:0.85; }
-        .overlay { position:absolute; top:0; left:0; width:100%; height:100%; background:linear-gradient(to bottom, rgba(10,10,12,0.4), rgba(10,10,12,0.1) 40%, rgba(10,10,12,0.95)); padding:1rem; display:flex; flex-direction:column; justify-content:flex-end; }
-        .c-title { font-size:1.2rem; font-weight:700; color:#fff; letter-spacing:-0.01em; text-shadow:0 2px 4px rgba(0,0,0,0.6); }
-        .content { padding:1.1rem; flex-grow:1; display:flex; flex-direction:column; justify-content:space-between; gap:0.6rem; }
-        .tag { font-family:monospace; font-size:0.6rem; color:var(--copper); font-weight:600; text-transform:uppercase; }
-        .desc { color:var(--muted); font-size:0.8rem; line-height:1.4; }
-        .btns { display:flex; gap:0.8rem; align-items:center; margin-top:auto; }
-        .btns a, .btns span { text-decoration:none; font-size:0.75rem; font-weight:500; }
-        .btn-m { color:var(--copper); }
-        .btn-m:hover { text-decoration:underline; }
-        .btn-s { color:var(--muted); }
-        .btn-s:hover { color:var(--cream); }
-        .footer { padding:2.5rem 2rem; border-top:1px solid rgba(255,255,255,0.05); text-align:center; font-size:0.65rem; color:var(--muted); }
-        @media (max-width:1024px) { .grid { grid-template-columns:repeat(2,1fr); } }
-        @media (max-width:640px) { .section-block { padding:0.5rem 1rem; } .grid { grid-template-columns:1fr; gap:1.2rem; } .card { min-height:auto; } }
-    </style>
-</head>
-<body>
-
-    <main class="main-container">
-        <section class="hero">
-            <img src="./logo.png" alt="Kurve3D Logo" class="hero-title-img">
-            <p class="hero-subtitle">Advanced Pipeline & Utility Addons for Blender</p>
-        </section>
-
-        <section id="addons" class="section-block">
-            <h2 class="section-title">Blender Addons</h2>
-            <div class="grid">
-                
-                <!-- CARD 1 -->
-                <div class="card">
-                    <div class="img-box">
-                        <img src="./kspline.png" alt="KurveSpline" class="cover">
-                        <div class="overlay"><h3 class="c-title">KURVESPLINE</h3></div>
-                    </div>
-                    <div class="content">
-                        <div>
-                            <div class="tag">Modeling / Splines</div>
-                            <p class="desc">3ds Max spline creation toolset translation natively in Blender for any object modeling.</p>
-                        </div>
-                        <div class="btns">
-                            <span class="btn-s">Coming Soon</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CARD 2 -->
-                <div class="card">
-                    <div class="img-box">
-                        <img src="./kforge.png" alt="K Forge" class="cover">
-                        <div class="overlay"><h3 class="c-title">K FORGE</h3></div>
-                    </div>
-                    <div class="content">
-                        <div><div class="tag">Materials / Texturing</div><p class="desc">Advanced Material paint & Texture Authoring tailored for modern production pipelines.</p></div>
-                        <div class="btns"><span class="btn-s">Coming Soon</span></div>
-                    </div>
-                </div>
-
-                <!-- CARD 3 -->
-                <div class="card">
-                    <div class="img-box">
-                        <img src="./kmind.png" alt="K-mind" class="cover">
-                        <div class="overlay"><h3 class="c-title">K-MIND</h3></div>
-                    </div>
-                    <div class="content">
-                        <div><div class="tag">AI / Crowds & Navigation</div><p class="desc">Professional AI engine for character navigation and crowd simulation inside Blender.</p></div>
-                        <div class="btns"><span class="btn-s">Coming Soon</span></div>
-                    </div>
-                </div>
-
-                <!-- CARD 4 -->
-                <div class="card">
-                    <div class="img-box">
-                        <img src="./kpropath.png" alt="K Propath" class="cover">
-                        <div class="overlay"><h3 class="c-title">K PROPATH</h3></div>
-                    </div>
-                    <div class="content">
-                        <div><div class="tag">Animation / Camera Paths</div><p class="desc">2-click path automation with roller-coaster physics and tilt controls.</p></div>
-                        <div class="btns"><span class="btn-s">Coming Soon</span></div>
-                    </div>
-                </div>
-
+<div class="grid">
+    
+    <!-- CARD 1 -->
+    <a href="kspline-video.html" target="_blank" style="text-decoration: none; color: inherit;">
+        <div class="card">
+            <div class="img-box">
+                <img src="./kspline.png" alt="KurveSpline" class="cover">
+                <div class="overlay"><h3 class="c-title">KURVESPLINE</h3></div>
             </div>
-        </section>
-    </main>
+            <div class="content">
+                <div>
+                    <div class="tag">Modeling / Splines</div>
+                    <p class="desc">3ds Max spline creation toolset translation natively in Blender for any object modeling.</p>
+                </div>
+                <div class="btns">
+                    <span class="btn-m">Watch Demo &rarr;</span>
+                </div>
+            </div>
+        </div>
+    </a>
 
-    <footer class="footer"><p>&copy; 2026 Kurve3D. All rights reserved.</p></footer>
+    <!-- CARD 2 -->
+    <a href="kforge-video.html" target="_blank" style="text-decoration: none; color: inherit;">
+        <div class="card">
+            <div class="img-box">
+                <img src="./kforge.png" alt="K Forge" class="cover">
+                <div class="overlay"><h3 class="c-title">K FORGE</h3></div>
+            </div>
+            <div class="content">
+                <div>
+                    <div class="tag">Materials / Texturing</div>
+                    <p class="desc">Advanced Material paint & Texture Authoring tailored for modern production pipelines.</p>
+                </div>
+                <div class="btns">
+                    <span class="btn-m">Watch Demo &rarr;</span>
+                </div>
+            </div>
+        </div>
+    </a>
 
-</body>
-</html>
+    <!-- CARD 3 -->
+    <a href="kmind-video.html" target="_blank" style="text-decoration: none; color: inherit;">
+        <div class="card">
+            <div class="img-box">
+                <img src="./kmind.png" alt="K-mind" class="cover">
+                <div class="overlay"><h3 class="c-title">K-MIND</h3></div>
+            </div>
+            <div class="content">
+                <div>
+                    <div class="tag">AI / Crowds & Navigation</div>
+                    <p class="desc">Professional AI engine for character navigation and crowd simulation inside Blender.</p>
+                </div>
+                <div class="btns">
+                    <span class="btn-m">Watch Demo &rarr;</span>
+                </div>
+            </div>
+        </div>
+    </a>
+
+    <!-- CARD 4 -->
+    <a href="kpropath-video.html" target="_blank" style="text-decoration: none; color: inherit;">
+        <div class="card">
+            <div class="img-box">
+                <img src="./kpropath.png" alt="K Propath" class="cover">
+                <div class="overlay"><h3 class="c-title">K PROPATH</h3></div>
+            </div>
+            <div class="content">
+                <div>
+                    <div class="tag">Animation / Camera Paths</div>
+                    <p class="desc">2-click path automation with roller-coaster physics and tilt controls.</p>
+                </div>
+                <div class="btns">
+                    <span class="btn-m">Watch Demo &rarr;</span>
+                </div>
+            </div>
+        </div>
+    </a>
+
+</div>
